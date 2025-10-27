@@ -26,12 +26,22 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    override fun runMain() {
-        main()
+    @Test
+    fun `예외 테스트 -시도 횟수에 문자열 입력 시`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                runException("ka", "김")
+            }
+        }
     }
 
-    companion object {
-        private const val MOVING_FORWARD: Int = 4
-        private const val STOP: Int = 3
-    }
+
+override fun runMain() {
+    main()
+}
+
+companion object {
+    private const val MOVING_FORWARD: Int = 4
+    private const val STOP: Int = 3
+}
 }
