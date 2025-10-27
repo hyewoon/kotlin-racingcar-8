@@ -35,13 +35,24 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `렌덤값이 4이상이면 자동차 전진한다`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output().contains("pobi : -"))
+            },
+            4
+        )
+    }
 
-override fun runMain() {
-    main()
-}
 
-companion object {
-    private const val MOVING_FORWARD: Int = 4
-    private const val STOP: Int = 3
-}
+    override fun runMain() {
+        main()
+    }
+
+    companion object {
+        private const val MOVING_FORWARD: Int = 4
+        private const val STOP: Int = 3
+    }
 }

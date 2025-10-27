@@ -10,27 +10,35 @@ fun main() {
     val input = readLine()!!
     val carList: MutableList<String> = input.split(",").map { it.trim() }.toMutableList()
 
-   //if(carList.filter{it.length > 5}.isNotEmpty()) throw IllegalArgumentException()
-   // any(조건)조건에 만족하는 요소 하나라도 있으면 true반환
-    if(carList.any{it.length > 5}) throw IllegalArgumentException("자동차이름은 5자 이하여야 합니다.")
+    //if(carList.filter{it.length > 5}.isNotEmpty()) throw IllegalArgumentException()
+    // any(조건)조건에 만족하는 요소 하나라도 있으면 true반환
+    if (carList.any { it.length > 5 }) throw IllegalArgumentException("자동차이름은 5자 이하여야 합니다.")
 
     println("시도할 횟수는 몇 회인가요?")
     val inputNum = readLine()!!
     var count: Int = 0
-    try{
+    try {
         count = inputNum.toInt()
-    }catch(e:Exception){
+    } catch (e: Exception) {
         throw IllegalArgumentException("숫자를 입력해주세요")
     }
 
-    val carPositions = mutableListOf<String, Int>()
+    val carPositions = mutableMapOf<String, Int>()
     //자동차 멤버 초기화
-    for(name in carList){
+    for (name in carList) {
         carPositions[name] = 0
     }
 
 }
 
+fun pickRandomNumberAndSetNumber(carList: MutableList<String>, carPositions: MutableMap<String, Int>) {
+    for (name in carList) {
+        val result = Randoms.pickNumberInRange(0, 9)
+       if(result >= 4) {
+           carPositions[name] = (carPositions[name] ?: 0) + 1
+       }
+    }
+}
 
 
 
