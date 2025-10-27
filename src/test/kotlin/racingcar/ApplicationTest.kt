@@ -46,6 +46,28 @@ class ApplicationTest : NsTest() {
         )
     }
 
+    @Test
+    fun `단독우승자 있는 경우`(){
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output().contains("최종우승자: pobi"))
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
+    fun `공동 우승자 있는 경우`(){
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output().contains("최종우승자: pobi, woni"))
+            },
+            MOVING_FORWARD, MOVING_FORWARD, STOP
+        )
+    }
+
 
     override fun runMain() {
         main()

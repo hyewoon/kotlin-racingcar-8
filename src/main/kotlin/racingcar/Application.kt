@@ -29,6 +29,12 @@ fun main() {
         carPositions[name] = 0
     }
 
+    repeat(count){
+        pickRandomNumberAndSetNumber(carList, carPositions)
+    }
+
+    printWinner(carList, carPositions)
+
 }
 
 fun pickRandomNumberAndSetNumber(carList: MutableList<String>, carPositions: MutableMap<String, Int>) {
@@ -38,6 +44,15 @@ fun pickRandomNumberAndSetNumber(carList: MutableList<String>, carPositions: Mut
            carPositions[name] = (carPositions[name] ?: 0) + 1
        }
     }
+}
+
+fun printWinner(carList: MutableList<String>, carPositions: MutableMap<String, Int>) {
+    //최대값 가져오기
+    val max = carPositions.values.maxOrNull() ?: 0
+    //값으로 키값찾기
+    val winner = carPositions.filter { it.value == max }.keys
+    print("최종 우승자 : ${winner.joinToString(", ")}")
+
 }
 
 
