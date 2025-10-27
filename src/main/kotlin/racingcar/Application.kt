@@ -31,6 +31,7 @@ fun main() {
 
     repeat(count){
         pickRandomNumberAndSetNumber(carList, carPositions)
+        printStatus(carList, carPositions)
     }
 
     printWinner(carList, carPositions)
@@ -53,6 +54,21 @@ fun printWinner(carList: MutableList<String>, carPositions: MutableMap<String, I
     val winner = carPositions.filter { it.value == max }.keys
     print("최종 우승자 : ${winner.joinToString(", ")}")
 
+}
+
+
+fun printStatus(carList: List<String>, carPositions: Map<String, Int>) {
+    for (name in carList) {
+        print("$name : ")
+
+        // 전진 횟수만큼 "-" 출력
+        val position = carPositions[name]!!
+        for (i in 0 until position) {
+            print("-")
+        }
+        println()  // 줄바꿈
+    }
+    println()  // 빈 줄
 }
 
 
