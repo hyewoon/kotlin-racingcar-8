@@ -23,6 +23,12 @@ fun main() {
         throw IllegalArgumentException("숫자를 입력해주세요")
     }
 
+    val carPositions = mutableListOf<String, Int>()
+    //자동차 멤버 초기화
+    for(name in carList){
+        carPositions[name] = 0
+    }
+
 }
 
 
